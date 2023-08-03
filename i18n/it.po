@@ -1,0 +1,38 @@
+module,type,name,res_id,src,value,comments
+purchase_requisition_send,model,"ir.model,name",purchase_requisition_send.model_purchase_requisition,Purchase Requisition,Richiesta di acquisto,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition____last_update,Last Modified on,Ultima modifica il,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__display_name,Display Name,Nome visualizzato,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__id,ID,ID,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__name,Reference,Riferimento,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__state,Status,Stato,
+purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__state_blanket_order,State Blanket Order,Stato ordine quadro,
+purchase_requisition_send,model,"ir.model.fields.selection,name",purchase_requisition_send.selection__purchase_requisition__state__sent,Sent,Sent,
+purchase_requisition_send,model,"ir.model.fields.selection,name",purchase_requisition_send.selection__purchase_requisition__state_blanket_order__sent,Sent,Sent,
+purchase_requisition_send,model_terms,"ir.ui.view,arch_db",purchase_requisition_send.view_purchase_requisition_form,Send by Email,Send by Email,
+purchase_requisition_send,model,"mail.template,subject",purchase_requisition_send.email_template_purchase_requisition,Purchase contract ${object.name or 'n/a' } ready for review,Purchase contract ${object.name or 'n/a' } ready for review,
+purchase_requisition_send,model,"mail.template,body_html",purchase_requisition_send.email_template_purchase_requisition,"<div>
+Dear ${object.vendor_id.name},
+<br/>
+<br/>
+Your purchase contract <strong>${object.name}</strong> is ready for review.
+<br/>
+<br/>
+Do not hesitate to contact us if you have any questions.
+<br/>
+</div>
+        ","<div>
+Spett.le ${object.vendor_id.name},
+<br/>
+<br/>
+In allegato il suo contratto <strong>${object.name}</strong>
+<br/>
+<br/>
+Un cordiale saluto
+<br/>
+</div>
+        ",
+purchase_requisition_send,model,"mail.template,report_name",purchase_requisition_send.email_template_purchase_requisition,${object.name},${object.name},
+purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,9,New,New,
+purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,23,New,New,
+purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,23,New,New,
+purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,51,Compose Email,Compose Email,
