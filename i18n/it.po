@@ -1,26 +1,40 @@
-module,type,name,res_id,src,value,comments
-purchase_requisition_send,model,"ir.model,name",purchase_requisition_send.model_purchase_requisition,Purchase Requisition,Richiesta di acquisto,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition____last_update,Last Modified on,Ultima modifica il,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__display_name,Display Name,Nome visualizzato,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__id,ID,ID,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__name,Reference,Riferimento,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__state,Status,Stato,
-purchase_requisition_send,model,"ir.model.fields,field_description",purchase_requisition_send.field_purchase_requisition__state_blanket_order,State Blanket Order,Stato ordine quadro,
-purchase_requisition_send,model,"ir.model.fields.selection,name",purchase_requisition_send.selection__purchase_requisition__state__sent,Sent,Sent,
-purchase_requisition_send,model,"ir.model.fields.selection,name",purchase_requisition_send.selection__purchase_requisition__state_blanket_order__sent,Sent,Sent,
-purchase_requisition_send,model_terms,"ir.ui.view,arch_db",purchase_requisition_send.view_purchase_requisition_form,Send by Email,Send by Email,
-purchase_requisition_send,model,"mail.template,subject",purchase_requisition_send.email_template_purchase_requisition,Purchase contract ${object.name or 'n/a' } ready for review,Purchase contract ${object.name or 'n/a' } ready for review,
-purchase_requisition_send,model,"mail.template,body_html",purchase_requisition_send.email_template_purchase_requisition,"<div>
-Dear ${object.vendor_id.name},
-<br/>
-<br/>
-Your purchase contract <strong>${object.name}</strong> is ready for review.
-<br/>
-<br/>
-Do not hesitate to contact us if you have any questions.
-<br/>
-</div>
-        ","<div>
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_requisition_send
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-04 13:09+0000\n"
+"PO-Revision-Date: 2023-08-04 13:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_requisition_send
+#: model:mail.template,report_name:purchase_requisition_send.email_template_purchase_requisition
+msgid "${object.name}"
+msgstr ""
+
+#. module: purchase_requisition_send
+#: model:mail.template,body_html:purchase_requisition_send.email_template_purchase_requisition
+msgid ""
+"<div>\n"
+"Dear ${object.vendor_id.name},\n"
+"<br/>\n"
+"<br/>\n"
+"Your purchase contract <strong>${object.name}</strong> is ready for review.\n"
+"<br/>\n"
+"<br/>\n"
+"Do not hesitate to contact us if you have any questions.\n"
+"<br/>\n"
+"</div>\n"
+"        "
+msgstr "<div>
 Spett.le ${object.vendor_id.name},
 <br/>
 <br/>
@@ -30,9 +44,55 @@ In allegato il suo contratto <strong>${object.name}</strong>
 Un cordiale saluto
 <br/>
 </div>
-        ",
-purchase_requisition_send,model,"mail.template,report_name",purchase_requisition_send.email_template_purchase_requisition,${object.name},${object.name},
-purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,9,New,New,
-purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,23,New,New,
-purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,23,New,New,
-purchase_requisition_send,code,addons/purchase_requisition_send/models/purchase_requisition.py,51,Compose Email,Compose Email,
+        "
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition__id
+msgid "ID"
+msgstr ""
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: purchase_requisition_send
+#: model:ir.model,name:purchase_requisition_send.model_purchase_requisition
+msgid "Purchase Requisition"
+msgstr "Richiesta di acquisto"
+
+#. module: purchase_requisition_send
+#: model:mail.template,subject:purchase_requisition_send.email_template_purchase_requisition
+msgid "Purchase contract ${object.name or 'n/a' } ready for review"
+msgstr "Contratto ${object.name or 'n/a' } pronto per revisione"
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition__name
+msgid "Reference"
+msgstr "Riferimento"
+
+#. module: purchase_requisition_send
+#: model_terms:ir.ui.view,arch_db:purchase_requisition_send.view_purchase_requisition_form
+msgid "Send by Email"
+msgstr "INVIA CON EMAIL"
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields.selection,name:purchase_requisition_send.selection__purchase_requisition__state__sent
+#: model:ir.model.fields.selection,name:purchase_requisition_send.selection__purchase_requisition__state_blanket_order__sent
+msgid "Sent"
+msgstr ""
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition__state_blanket_order
+msgid "State Blanket Order"
+msgstr "Stato ordine quadro"
+
+#. module: purchase_requisition_send
+#: model:ir.model.fields,field_description:purchase_requisition_send.field_purchase_requisition__state
+msgid "Status"
+msgstr "Stato"
