@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models
 import logging
 _logger = logging.getLogger(__name__)
-
+import mimetypes
 
 class PurchaseRequisition(models.Model):
     _inherit = "purchase.requisition"
@@ -15,6 +15,46 @@ class PurchaseRequisition(models.Model):
         ('sent', 'Sent'),
         ('ongoing',)
     ], ondelete={'sent': 'cascade'})
+
+    def get_attachment_ids_product(self):
+        attachment_ids = self.env['ir.attachment']
+        for line in self.line_ids:
+            if line.product_id.design_file_download:
+                name = ""
+                name += "[" + line.product_id.barcode + "] " + "[Design File]" + line.product_id.name
+                attachment_id= self.env['ir.attachment'].create({'name': name,
+                                                                    'res_model': 'purchase.order',
+                                                                    'datas': line.product_id.design_file_download,
+                                                                    'type': 'binary',
+                                                                    'res_id': self.id})
+                extension = mimetypes.guess_extension(attachment_id.mimetype)
+                attachment_id.name = '%s%s' % (attachment_id.name,extension)
+                attachment_ids |=attachment_id
+            if line.product_id.cable_length:
+                name = ""
+                name += "[" + line.product_id.barcode + "] " + "[Lunghezza Cavi]" + line.product_id.name
+                attachment_id= self.env['ir.attachment'].create({'name': name,
+                                                                    'res_model': 'purchase.order',
+                                                                    'datas': line.product_id.cable_length,
+                                                                    'type': 'binary',
+                                                                    'res_id': self.id})
+                extension = mimetypes.guess_extension(attachment_id.mimetype)
+                attachment_id.name = '%s%s' % (attachment_id.name,extension)
+                attachment_ids |=attachment_id
+            if line.product_id.extra_file:
+                name = ""
+
+                name = line.product_id.extra_file_file_name or "[" + line.product_id.barcode + "] " + "[File extra]" + line.product_id.name
+                attachment_id = self.env['ir.attachment'].create({'name': name,
+                                                                  'res_model': 'purchase.order',
+                                                                  'datas': line.product_id.extra_file,
+                                                                  'type': 'binary',
+                                                                  'res_id': self.id})
+                # extension = mimetypes.guess_extension(attachment_id.mimetype)
+                # attachment_id.name = '%s%s' % (attachment_id.name,extension)
+                attachment_ids |= attachment_id
+
+        return attachment_ids
 
     @api.model
     def create(self,vals):
@@ -38,9 +78,13 @@ class PurchaseRequisition(models.Model):
             lang = template._render_lang(self.ids)[self.id]
 
         compose_form = self.env.ref('mail.email_compose_message_wizard_form')
+
+        attachment_ids_product = self.get_attachment_ids_product()
+
         ctx = {
             'default_model': 'purchase.requisition',
             'default_res_id': self.ids[0],
+            'default_attachment_ids': attachment_ids_product.ids,
             'default_use_template': bool(template),
             'default_template_id': template.id,
             'default_composition_mode': 'comment',
