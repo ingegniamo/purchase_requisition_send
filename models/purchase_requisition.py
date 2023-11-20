@@ -23,7 +23,7 @@ class PurchaseRequisition(models.Model):
                 name = ""
                 name += "[" + line.product_id.barcode + "] " + "[Design File]" + line.product_id.name
                 attachment_id= self.env['ir.attachment'].create({'name': name,
-                                                                    'res_model': 'purchase.order',
+                                                                    'res_model': 'purchase.requisition',
                                                                     'datas': line.product_id.design_file_download,
                                                                     'type': 'binary',
                                                                     'res_id': self.id})
@@ -34,7 +34,7 @@ class PurchaseRequisition(models.Model):
                 name = ""
                 name += "[" + line.product_id.barcode + "] " + "[Lunghezza Cavi]" + line.product_id.name
                 attachment_id= self.env['ir.attachment'].create({'name': name,
-                                                                    'res_model': 'purchase.order',
+                                                                    'res_model': 'purchase.requisition',
                                                                     'datas': line.product_id.cable_length,
                                                                     'type': 'binary',
                                                                     'res_id': self.id})
@@ -46,7 +46,7 @@ class PurchaseRequisition(models.Model):
 
                 name = line.product_id.extra_file_file_name or "[" + line.product_id.barcode + "] " + "[File extra]" + line.product_id.name
                 attachment_id = self.env['ir.attachment'].create({'name': name,
-                                                                  'res_model': 'purchase.order',
+                                                                  'res_model': 'purchase.requisition',
                                                                   'datas': line.product_id.extra_file,
                                                                   'type': 'binary',
                                                                   'res_id': self.id})
