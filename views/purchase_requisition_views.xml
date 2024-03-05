@@ -8,7 +8,8 @@
         <field name="arch" type="xml">
 
             <header position="inside">
-                <button name="action_order_send" string="Send by Email" type="object" class="btn-primary"/>
+                <button name="action_order_send" string="Send by Email" type="object"
+                    class="btn-primary" />
             </header>
 
             <field name="state_blanket_order" position="attributes">
@@ -19,16 +20,17 @@
             </field>
 
             <button name="action_draft" position="attributes">
-                <attribute name="states">cancel,sent</attribute>
+                <attribute name="invisible">state not in ('cancel', 'sent')</attribute>
             </button>
             <button name="action_open" position="attributes">
-                <attribute name="states">in_progress,sent</attribute>
+                <attribute name="invisible">state not in ('in_progress', 'sent')</attribute>
             </button>
             <button name="action_done" position="attributes">
-                <attribute name="states">open,ongoing</attribute>
+                <attribute name="invisible">state not in ('open', 'ongoing')</attribute>
             </button>
             <button name="action_cancel" position="attributes">
-                <attribute name="states">draft,in_progress,ongoing,sent</attribute>
+                <attribute name="invisible">state not in ('draft',
+                    'in_progress', 'ongoing', 'sent')</attribute>
             </button>
 
         </field>

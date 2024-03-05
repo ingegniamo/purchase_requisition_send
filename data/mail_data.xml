@@ -18,8 +18,8 @@ Do not hesitate to contact us if you have any questions.
 <br/>
 </div>
         </field>
-        <field name="report_template" ref="purchase_requisition.action_report_purchase_requisitions"/>
-        <field name="report_name">${object.name}</field>
+        <!-- <field name="report_template" ref="purchase_requisition.action_report_purchase_requisitions"/>
+        <field name="report_name">${object.name}</field> -->
         <field name="lang">${object.vendor_id.lang}</field>
         <field name="auto_delete" eval="True"/>
     </record>
