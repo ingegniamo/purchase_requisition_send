@@ -89,6 +89,7 @@ class PurchaseRequisition(models.Model):
             'default_composition_mode': 'comment',
             'mark_pr_as_sent': True,
             'force_email': True,
+            'additional_attach':True
         }  
         return {
             'name': _('Compose Email'),
