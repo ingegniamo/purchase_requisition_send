@@ -79,7 +79,7 @@ class PurchaseRequisition(models.Model):
 
         compose_form = self.env.ref('mail.email_compose_message_wizard_form')
 
-        attachment_ids_product = self.get_attachment_ids_product()
+        #attachment_ids_product = self.get_attachment_ids_product()
 
         ctx = {
             'default_model': 'purchase.requisition',
