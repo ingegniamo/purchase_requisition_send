@@ -16,7 +16,7 @@ class PurchaseRequisition(models.Model):
         ('ongoing',)
     ], ondelete={'sent': 'cascade'})
 
-    def get_attachment_ids_product(self):
+    """def get_attachment_ids_product(self):
         attachment_ids = self.env['ir.attachment']
         for line in self.line_ids:
             if line.product_id.design_file_download:
@@ -54,7 +54,7 @@ class PurchaseRequisition(models.Model):
                 # attachment_id.name = '%s%s' % (attachment_id.name,extension)
                 attachment_ids |= attachment_id
 
-        return attachment_ids
+        return attachment_ids"""
 
     @api.model
     def create(self,vals):
@@ -83,8 +83,7 @@ class PurchaseRequisition(models.Model):
 
         ctx = {
             'default_model': 'purchase.requisition',
-            'default_res_id': self.ids[0],
-            'default_attachment_ids': attachment_ids_product.ids,
+            'default_res_ids': [self.ids[0]],           
             'default_use_template': bool(template),
             'default_template_id': template.id,
             'default_composition_mode': 'comment',
